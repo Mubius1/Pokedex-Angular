@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand-sm ">
+    <a title="Clicca per resettare la ricerca" class="navbar-brand" (click)="OnClickClearAllPokemons()" (click)="OnClickDeleteAllPokemonDetail()"  href="#">Pokedex </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form   class="form-inline my-2 my-lg-0">
+        <input (focusout)="OnFocusOutResetInputValue()"title="Scrivi il numero o il nome del pokemon da ricercare" class="form-control mr-sm-2"   [formControl]="name"  name="name" type="search" placeholder="Cerca nel Pokedex" aria-label="Search">
+      </form>
+      <app-pokeball title="Clicca per visualizzare l`elenco dei pokemon" (click)="OnClickGetPokemonByPagination()"></app-pokeball>
+    </div>
+  </nav>

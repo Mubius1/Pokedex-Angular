@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+*{
+    font-family: 'Press Start 2P', cursive;
+    
+}
+input{
+    border-radius: 15px;
+}
+input:focus::placeholder {   /* fa sparire il placeholder al click */
+    color: transparent;
+  }
+
+input:hover{
+    box-shadow: 0px 0px 10px 3px bluefff;
+    transform: scale(1.01);
+    transition: linear 400ms;
+}
+.navbar{
+    background-color: #5068E8;
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 35%;
+}
+
+.navbar-brand{
+    padding-left: 20px;
+    padding-right: 20px;
+    color: yellow;
+    text-shadow: 2px 0 0 blue, -2px 0 0 blue, 0 2px 0 blue, 0 -2px 0 blue, 1px 1px blue, -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue;
+
+}
+.navbar-brand:hover{
+    text-shadow: 2px 0 0 blue, -2px 0 0 blue, 0 2px 0 blue, 0 -2px 0 blue, 1px 1px blue, -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue;
+    transform: scale(1.05);
+    transition: linear 400ms;
+}
+app-pokeball:hover{
+    transform: scale(1.05);
+    transition: linear 400ms;
+}

@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+* {
+  font-family: "Press Start 2P", cursive;
+}
+
+.wrapperLeft {
+  overflow-y: auto;
+  height: 89vh;
+}
+
+#titoloCard {
+  color: white;
+  text-align: center;
+}
+
+.d-flex {
+  border: 3px solid yellow;
+  border-radius: 45px;
+  margin-top: 5px;
+  padding-left: 5%;
+}
+
+.details:hover {
+  color: red;
+  cursor: pointer;
+}
+.pokeContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: grow;
+  background: black;
+}
+.pokeCardWrapper {
+  height: 90vh;
+  overflow-y: auto;
+  width: 50%;
+}
+.pokeCard {
+  display: flex;
+  border: 1px solid white;
+  margin: 10px;
+  padding: 5px;
+}
+
+.listOfElements {
+  background-color: #f59f48;
+  cursor: pointer;
+  
+}
+
+.listOfElements:hover {
+  background-color: #00f;
+  cursor: pointer;
+  transform: scale(0.95);
+  transition: 0.45s linear;
+}
+
+/* custom scrollbar */
+
+div::-webkit-scrollbar {
+  width: 15px;               /* larghezza della scrollbar */
+}
+div::-webkit-scrollbar-track {
+  background: #5068e8 ;        /* colore dell`elemento */
+}
+div::-webkit-scrollbar-thumb {
+  background-color: #f59f48;    /* colore della barra */
+  border-radius: 25px;       
+  border: 2px solid yellow;  
+}
+
+
+
+/* // elementi precedenti a quello dove passo il mouse sopra */
+/* .listOfElements:hover .listOfElements:not(:hover):not(:hover ~ .listOfElements) {
+  transform: scale(0.99);
+  transition: 0.45s linear;
+} */
+/* elementi successivi a quello dove passo il mouse sopra */
+.listOfElements:hover ~ .listOfElements {
+  transform: scale(0.99);
+  transition: 0.45s linear;
+}
+
+.pokeDetail {
+  width: 50%;
+}
+
+input {
+  border-radius: 15px;
+  width: 30%;
+}
+select {
+  border-radius: 15px;
+  border: none;
+}
+
+.pokeContainerFooter {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  border: 3px solid lightgrey;
+  background: #5068e8;
+  border-radius: 15px;
+  padding: 2%;
+  margin-top: 10px;
+}
+.upperFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.arrowsCont {
+  display: flex;
+  font-size: 39px;
+  cursor: pointer;
+  margin-right: 10px;
+  gap: 10px;
+}
+.arrows {
+  margin: 2px;
+}
+.arrows:hover {
+  text-shadow: 0px 0px 10px 15px #000000;
+  transform: scale(1.2);
+  transition: linear 400ms;
+}
+.bottomFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+}

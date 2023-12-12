@@ -1,0 +1,64 @@
+<div class="wrapperLeft scrollbar scrollbar-primary">
+  <div
+    *ngFor="let pokemon of pokeService.pokemons;index as i"
+    (mouseenter)="bipOnHover()"
+    class="d-flex justify-content-between align-items-center force-overflow listOfElements"
+    title="Clicca sulla sfera poké per visualizzare il pokemon"
+  >
+    <b id="titoloCard">{{ pokemon.url.slice(34, 40).replace("/", "") }} </b>
+    <b id="titoloCard">{{ pokemon.name | titlecase }}</b>
+
+    <app-pokeball (click)="clickOnPokeball(pokemon.url)" (mousedown)="selectedPokemon(i)"></app-pokeball>
+  </div>
+  <div
+    *ngIf="pokeService.pokemons "
+    class="pokeContainerFooter"
+  >
+    <!-- STA COSA LA DEVO SISTEMARE -->
+    <nav>
+      <div class="upperFooter">
+        <div class="arrowsCont">
+          <div title="Vai alla prima pagina del Pokedex" class="arrows" (click)="doppiaFrecciaSinistra()">&laquo;</div>
+          <div title="Vai alla pagina precedente del Pokedex" class="arrows" (click)="frecciaSinistra()">&lsaquo;</div>
+        </div>
+        <div>Pagina {{ this.currentPage }} di {{ totalPages }}</div>
+        <div class="arrowsCont">
+          <div title="Vai alla pagina successiva del Pokedex" class="arrows" (click)="frecciaDestra()">&rsaquo;</div>
+          <div title="Vai all`ultima pagina del Pokedex" class="arrows" (click)="doppiaFrecciaDestra()">&raquo;</div>
+        </div>
+      </div>
+      <div class="bottomFooter">
+        <div>Pokemon visualizzati:</div>
+        <div>
+          <input
+            type="number"
+            value="limit"
+            min="1"
+            name="limit"
+            [formControl]="limit"
+            id=""
+          />
+        </div>
+        <div>Pagina</div>
+        <div>
+          <select
+            [(ngModel)]="pagesSelect"
+            (change)="pagesChange(this.pagesSelect)"
+            name=""
+            id=""
+          >
+            <option [ngValue]="1" selected="selected">1</option>
+            <option
+              [ngValue]="i + 2"
+              *ngFor="let page of counter(totalPages - 1); index as i"
+              selected="selected"
+              value="1"
+            >
+              {{ i + 2 }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

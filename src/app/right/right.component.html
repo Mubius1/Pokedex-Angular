@@ -1,0 +1,36 @@
+<div class="wraper d-flex " >
+    <div *ngFor="let singlePokemonCard of pokeService.pokeDetails;index as i" class="pokeCard  flip-card">
+        <div class="flip-card-inner">
+            <!-- carta davanti -->
+            <div class="flip-card-front"> 
+                <div class="d-flex justify-content-center" style="border: 4px solid white; height: 30%; border-radius: 10px;">
+                    <div><img src={{pokeService.pokeDetails[i].sprites.front_default}} alt="front_default" ></div>                    
+                </div>
+                <div class="d-flex flex-column" style="border: 4px solid white;border-radius: 10px;height: 67%;margin-top: 10px;" >
+                    <div class="pokeText"><p> {{pokeService.pokeDetails[i].name |titlecase }}</p></div>
+                    <div class="pokeText"><p> Id #{{pokeService.pokeDetails[i].id}}</p></div>
+                    <div class="pokeText"><p>Tipo: {{pokeService.pokeDetails[i].types[0].type.name}}</p></div>
+                    <div class="pokeText"><p>HP: {{pokeService.pokeDetails[i].stats[0].base_stat}}</p></div> 
+                    <div class="pokeText"><p>Attacco: {{pokeService.pokeDetails[i].stats[1].base_stat}}</p></div> 
+                    <div class="pokeText"><p>Difesa: {{pokeService.pokeDetails[i].stats[2].base_stat}}</p></div> 
+                </div>
+            </div>
+            <div class="flip-card-back">
+                <!-- carta dietro -->
+                <div class="d-flex justify-content-center" style="border: 4px solid white;height: 30%;border-radius: 10px;">
+                    <div (click)="OnClickDeletePokemon(i)" class="closeToggle">X</div>                    
+                    <div><img src={{pokeService.pokeDetails[i].sprites.back_default}} alt="front_default" ></div>
+                </div>
+                <div class="d-flex flex-column" style="border: 4px solid white;border-radius: 10px;height: 67%; margin-top: 10px;" >
+                    <div class="pokeText"><p>Peso: {{pokeService.pokeDetails[i].weight}}</p></div>
+                    <div class="pokeText"><p>Altezza: {{pokeService.pokeDetails[i].height}}</p></div>
+                    <div class="pokeText"><p>Esperienza: {{pokeService.pokeDetails[i].base_experience}} </p></div> 
+                    <div class="pokeText"><p>Attacchi:</p></div>
+                    <div class="pokeText"><p>{{pokeService.pokeDetails[i].abilities[0].ability.name | titlecase}} </p></div>
+                    <div class="pokeText"><p>{{pokeService.pokeDetails[i].abilities[1].ability.name | titlecase}} </p></div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
