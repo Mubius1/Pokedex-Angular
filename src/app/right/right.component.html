@@ -1,36 +1,91 @@
-<div class="wraper d-flex " >
-    <div *ngFor="let singlePokemonCard of pokeService.pokeDetails;index as i" class="pokeCard  flip-card">
+<div class="pokemon-details-container">
+    <div *ngFor="let singlePokemonCard of pokeService.pokeDetails;index as i" class="pokemon-detail-card flip-card">
         <div class="flip-card-inner">
-            <!-- carta davanti -->
+            <!-- Fronte della card -->
             <div class="flip-card-front"> 
-                <div class="d-flex justify-content-center" style="border: 4px solid white; height: 30%; border-radius: 10px;">
-                    <div><img src={{pokeService.pokeDetails[i].sprites.front_default}} alt="front_default" ></div>                    
+                <div class="card-header">
+                    <div class="pokemon-id">#{{pokeService.pokeDetails[i].id}}</div>
+                    <div class="pokemon-name">{{pokeService.pokeDetails[i].name | titlecase}}</div>
                 </div>
-                <div class="d-flex flex-column" style="border: 4px solid white;border-radius: 10px;height: 67%;margin-top: 10px;" >
-                    <div class="pokeText"><p> {{pokeService.pokeDetails[i].name |titlecase }}</p></div>
-                    <div class="pokeText"><p> Id #{{pokeService.pokeDetails[i].id}}</p></div>
-                    <div class="pokeText"><p>Tipo: {{pokeService.pokeDetails[i].types[0].type.name}}</p></div>
-                    <div class="pokeText"><p>HP: {{pokeService.pokeDetails[i].stats[0].base_stat}}</p></div> 
-                    <div class="pokeText"><p>Attacco: {{pokeService.pokeDetails[i].stats[1].base_stat}}</p></div> 
-                    <div class="pokeText"><p>Difesa: {{pokeService.pokeDetails[i].stats[2].base_stat}}</p></div> 
+                
+                <div class="pokemon-image-container">
+                    <img src={{pokeService.pokeDetails[i].sprites.front_default}} alt="front_default" class="pokemon-image">
+                    <div class="image-glow"></div>
+                </div>
+                
+                <div class="pokemon-info">
+                    <div class="type-badge">
+                        <span class="type-icon">⚡</span>
+                        <span class="type-name">{{pokeService.pokeDetails[i].types[0].type.name | titlecase}}</span>
+                    </div>
+                    
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-label">HP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" [style.width.%]="(pokeService.pokeDetails[i].stats[0].base_stat / 255) * 100"></div>
+                            </div>
+                            <span class="stat-value">{{pokeService.pokeDetails[i].stats[0].base_stat}}</span>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="stat-label">ATK</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" [style.width.%]="(pokeService.pokeDetails[i].stats[1].base_stat / 255) * 100"></div>
+                            </div>
+                            <span class="stat-value">{{pokeService.pokeDetails[i].stats[1].base_stat}}</span>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="stat-label">DEF</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" [style.width.%]="(pokeService.pokeDetails[i].stats[2].base_stat / 255) * 100"></div>
+                            </div>
+                            <span class="stat-value">{{pokeService.pokeDetails[i].stats[2].base_stat}}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
+            <!-- Retro della card -->
             <div class="flip-card-back">
-                <!-- carta dietro -->
-                <div class="d-flex justify-content-center" style="border: 4px solid white;height: 30%;border-radius: 10px;">
-                    <div (click)="OnClickDeletePokemon(i)" class="closeToggle">X</div>                    
-                    <div><img src={{pokeService.pokeDetails[i].sprites.back_default}} alt="front_default" ></div>
+                <div class="card-header-back">
+                    <div class="pokemon-id-back">#{{pokeService.pokeDetails[i].id}}</div>
+                    <div class="close-button" (click)="OnClickDeletePokemon(i)">
+                        <span class="close-icon">×</span>
+                    </div>
                 </div>
-                <div class="d-flex flex-column" style="border: 4px solid white;border-radius: 10px;height: 67%; margin-top: 10px;" >
-                    <div class="pokeText"><p>Peso: {{pokeService.pokeDetails[i].weight}}</p></div>
-                    <div class="pokeText"><p>Altezza: {{pokeService.pokeDetails[i].height}}</p></div>
-                    <div class="pokeText"><p>Esperienza: {{pokeService.pokeDetails[i].base_experience}} </p></div> 
-                    <div class="pokeText"><p>Attacchi:</p></div>
-                    <div class="pokeText"><p>{{pokeService.pokeDetails[i].abilities[0].ability.name | titlecase}} </p></div>
-                    <div class="pokeText"><p>{{pokeService.pokeDetails[i].abilities[1].ability.name | titlecase}} </p></div>
+                
+                <div class="pokemon-image-container-back">
+                    <img src={{pokeService.pokeDetails[i].sprites.back_default}} alt="back_default" class="pokemon-image-back">
+                    <div class="image-glow-back"></div>
+                </div>
+                
+                <div class="pokemon-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Peso</span>
+                        <span class="detail-value">{{pokeService.pokeDetails[i].weight / 10}} kg</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Altezza</span>
+                        <span class="detail-value">{{pokeService.pokeDetails[i].height / 10}} m</span>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-label">Exp Base</span>
+                        <span class="detail-value">{{pokeService.pokeDetails[i].base_experience}}</span>
+                    </div>
+                    
+                    <div class="abilities-section">
+                        <h4 class="abilities-title">Abilità</h4>
+                        <div class="ability-item" *ngFor="let ability of pokeService.pokeDetails[i].abilities">
+                            <span class="ability-name">{{ability.ability.name | titlecase}}</span>
+                            <span class="ability-hidden" *ngIf="ability.is_hidden">(Nascosta)</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-
     </div>
 </div>

@@ -14,7 +14,8 @@ export class RightComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.pokeService.pokeDetails = this.pokeService.pokeDetails
+    // Inizializzazione del componente
+    console.log('Right component initialized');
   }
   OnClickDeletePokemon(index:number){
     this.pokeService.deletePokemonDetail(index)

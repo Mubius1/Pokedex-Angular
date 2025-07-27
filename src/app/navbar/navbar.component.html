@@ -1,12 +1,39 @@
-<nav class="navbar navbar-expand-sm ">
-    <a title="Clicca per resettare la ricerca" class="navbar-brand" (click)="OnClickClearAllPokemons()" (click)="OnClickDeleteAllPokemonDetail()"  href="#">Pokedex </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form   class="form-inline my-2 my-lg-0">
-        <input (focusout)="OnFocusOutResetInputValue()"title="Scrivi il numero o il nome del pokemon da ricercare" class="form-control mr-sm-2"   [formControl]="name"  name="name" type="search" placeholder="Cerca nel Pokedex" aria-label="Search">
-      </form>
-      <app-pokeball title="Clicca per visualizzare l`elenco dei pokemon" (click)="OnClickGetPokemonByPagination()"></app-pokeball>
+<nav class="modern-navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand-section">
+      <div class="brand-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="brand-text" (click)="OnClickClearAllPokemons(); OnClickDeleteAllPokemonDetail()">
+          Pokédex
+        </span>
+      </div>
     </div>
-  </nav>
+    
+    <div class="navbar-search-section">
+      <div class="search-container">
+        <div class="search-icon">🔍</div>
+        <input 
+          class="search-input" 
+          [formControl]="name"
+          type="search" 
+          placeholder="Cerca Pokémon..." 
+          (focusout)="OnFocusOutResetInputValue()"
+          title="Scrivi il nome del Pokémon da ricercare"
+        >
+        <div class="search-glow"></div>
+      </div>
+    </div>
+    
+    <div class="navbar-actions">
+      <div class="action-button pokeball-container" (click)="OnClickGetPokemonByPagination()" title="Clicca per visualizzare l'elenco dei Pokémon">
+        <app-pokeball></app-pokeball>
+        <div class="button-glow"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="navbar-background">
+    <div class="bg-gradient"></div>
+    <div class="bg-pattern"></div>
+  </div>
+</nav>
